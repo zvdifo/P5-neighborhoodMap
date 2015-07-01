@@ -3,32 +3,38 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>   
+    <div id="map-canvas"></div>  
+    <div class="list">
+      <div class="navbar-header">
+        <h2 class="headTitle" href="#">
+          NeighborSchool Map
+        </h2>  
+      </div>  
+      <div class="search-filter">
+        <div class="search-header">
+          <div id="toggle-button">
+          <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#navbar">show / hide</button>
+          </div>
+          <form id='search' name='search'>
+            <label for="locationSearch"></label>
+            <input type="text" name="locationSearch" id="locationSearch" placeholder="search" data-bind="textInput: locSearchInput" class="form-control"/>
+          </form> 
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">   
+          <ul style="list-style: none;" id="location-list" data-bind="foreach: locationList">
+            <li><span data-bind="text: $data, click: $parent.searchContent" id="clickText"></span></li>
+          </ul>
+        </div>  
+      </div>
+    </div>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <script type='text/javascript' src='js/lib/jquery-2.1.4.min.js'></script>
     <script type='text/javascript' src='js/lib/knockout-3.2.0.js'></script>
-    
-    <script src="js/mapplace.js"></script>
-  </head>
-  <body>
-    <div id="map-canvas"></div>
-    <div class="list">
-      <div class="search-filter">
-        <form action="#"> 
-          <input id="search" placeholder="Search…" type="search" name="q" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off"> 
-        </form> 
-
-        <div class="content"> 
-          <ul data-bind="template: {name:'allplace', foreach:allplaces}"> 
-          </ul> 
-        </div> 
-  
-        <script type="text/html" id="allplace"> 
-          <li>
-            <strong data-bind="text: name"></strong> 
-          </li>
-        </script>
-          
-      </div> 
-      </div>
-    </body>
-  </html>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>    
+    <script src="js/mapViewModel.js"></script>
+  </body>
+</html>
