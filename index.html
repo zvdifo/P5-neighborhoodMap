@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:300" rel="stylesheet">
   </head>
   <body>   
     <div id="map-canvas"></div>  
@@ -18,24 +18,26 @@
       </div>  
       <div class="search-filter">
         <div class="search-header">
-          <div id="toggle-button">
-          <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#navbar">show / hide</button>
+          <div class="toggle-button">
+          <button type="button" class="btn btn-success" data-toggle="collapse" data-target=".navbar">show / hide</button>
           </div>
-          <form id='search' name='search'>
+          <form class='search' name='search'>
             <label for="locationSearch"></label>
-            <input type="text" name="locationSearch" id="locationSearch" placeholder="search" data-bind="textInput: locSearchInput" class="form-control"/>
+            <input type="text" name="locationSearch" id="locationSearch" placeholder="search" data-bind="textInput: locSearchInput" class="form-control">
           </form> 
         </div>
-        <div id="navbar" class="navbar-collapse collapse">   
+        <div class="navbar" class="collapse">   
           <ul style="list-style: none;" id="location-list" data-bind="foreach: locationList">
-            <li><span data-bind="text: $data, click: $parent.searchContent" id="clickText"></span></li>
+            <li>
+              <span data-bind="text: $data, click: $parent.searchContent" id="clickText"></span>
+            </li>
           </ul>
         </div>  
       </div>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-    <script type='text/javascript' src='js/lib/jquery-2.1.4.min.js'></script>
-    <script type='text/javascript' src='js/lib/knockout-3.2.0.js'></script>
+    <script src="js/lib/jquery-2.1.4.min.js"></script>
+    <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>    
     <script src="js/mapViewModel.js"></script>
   </body>
