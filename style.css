@@ -20,6 +20,8 @@ body {
   margin: 15px 15px 15px 10px;
   background-color: #FFFFFF;
   border-radius: 10px;
+  max-height: 90vh;
+
 }
 
 
@@ -68,20 +70,12 @@ body {
 
 .navbar {
   margin-bottom: 10px;
+  overflow-y: scroll;
+  max-height: 60vh;
 }
 
 
 /*responsive set*/
-@media screen and ( max-height: 600px ) {
-  .list{
-    max-height: 90vh;
-  }
-
-  .navbar {
-    overflow-y: scroll;
-    max-height: 60vh;
-  }
-}
 
 
 @media screen and ( max-height: 500px ) {
