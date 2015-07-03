@@ -4,10 +4,19 @@ I wrote this one-page application using KnockOut js framework. It works on mobil
 Open http://zvdifo.github.io/P5-neighborhoodMap/ and have fun!<br>
 
 
-##ScreenShot
-![alt tag](https://github.com/zvdifo/P5-neighborhoodMap/blob/master/images/screenshot.PNG)
-![alt tag](https://github.com/zvdifo/P5-neighborhoodMap/blob/master/images/screenshot2.PNG)
-![alt tag](https://github.com/zvdifo/P5-neighborhoodMap/blob/master/images/screenshot3.PNG)
+##ScreenShots(On different divices)
+####chrome
+![alt tag](https://github.com/zvdifo/P5-neighborhoodMap/blob/gh-pages/images/chrome.PNG)
+####firefox
+![alt tag](https://github.com/zvdifo/P5-neighborhoodMap/blob/gh-pages/images/firefox.PNG)
+####ipad
+![alt tag](https://github.com/zvdifo/P5-neighborhoodMap/blob/gh-pages/images/ipad.PNG)
+####iphone 6 (vertical)
+![alt tag](https://github.com/zvdifo/P5-neighborhoodMap/blob/gh-pages/images/iphone6.1.PNG)
+####iphone 6 (horizon)
+![alt tag](https://github.com/zvdifo/P5-neighborhoodMap/blob/gh-pages/images/iphone6.2.PNG)
+####sumsung Note 3
+![alt tag](https://github.com/zvdifo/P5-neighborhoodMap/blob/gh-pages/images/iphone6.1.PNG)
 
 
 ##
