@@ -2,6 +2,15 @@
 function ViewModel(mapModel) {
   var self = this;
 
+  //add mouse listener for clicking.
+  self.addListener = function() {
+    mapModel.markers.forEach(function(marker) {
+      google.maps.event.addListener(marker, 'click', function() {
+          self.searchContent(marker.title);
+      });
+    })
+  }
+
   //generate a location list.
   self.locSearchInput = ko.observable('');
   self.locationList = ko.computed(function() {
@@ -32,7 +41,7 @@ function ViewModel(mapModel) {
         }
     });
 
-
+    //search,click to show infoWindow
     self.searchContent = function(location){
       mapModel.markers.forEach(function(marker) {
             if (location == marker.title) {
@@ -90,7 +99,7 @@ function MapModel() {
     service.nearbySearch(request, callback);
   };
 
-  //create markers.
+  //create markers and make totallist.
   self.createMarker = function(place) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
@@ -99,38 +108,11 @@ function MapModel() {
     });
     self.markers.push(marker);
     self.totallist.push([place.name,placeLoc[0],placeLoc[1]]);
-    marker.setMap(self.map);
-    google.maps.event.addListener(marker, 'click', function() {
-          self.searchContent(marker.title);
-      });
-  };
-  
-  //using a wikipedia API to show more information.
-  self.searchContent = function(location){
-      self.markers.forEach(function(marker) {
-            if (location == marker.title) {
-               var wikipediaURL = 'http://zh.wikipedia.org/w/api.php?action=opensearch&search=' + location + '&format=json';
-                $.ajax(wikipediaURL, {
-                    dataType: 'jsonp'
-                })
-                    .done(function(data) {
-                        if (data[2][0] !== undefined) {
-                            var title = "<h2>" + data[0] + "</h2>" ;
-                            self.infowindow.setContent(title +data[2][0]);
-                        } else {
-                            self.infowindow.setContent('No WikiPedia article found.');
-                        }
-                    })
-                    .fail(function() {
-                        self.infowindow.setContent('Wikipedia Articles Could Not Be Loaded');
-                    });
-                self.infowindow.open(self.map,marker);
-                marker.setMap(self.map);
-                self.map.setCenter(marker.getPosition());
-            } 
-    });
+    marker.setMap(self.map);    
   };
 } 
+
+
 
 //load when open window
 $(window).load(function() {
@@ -140,8 +122,9 @@ $(window).load(function() {
   var viewModel;
   var create = function() {
     viewModel = new ViewModel(mapModel);
+    viewModel.addListener();
     ko.applyBindings(viewModel);
   };
-  //in case list showing before markers being pushed.
+  //set a delay in case list showing before totallist generate.
   setTimeout(create, 3000);
 });
